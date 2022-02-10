@@ -1,0 +1,57 @@
+<h1>
+    {{ storeName |uppercase }}
+</h1>
+
+
+<img [src]="storeLogo" alt="" [style.width]="'200px'" [style.height]="'200px'" />
+<h3 *ngIf="discount">We offer an explicit discount of: {{ discount |percent }}</h3>
+<h3>hello</h3>
+<label for="two way">Name</label>
+<input title="two way" type="text" [(ngModel)]="userData"> {{userData}}
+
+
+
+
+<div>
+    <label for="cars">Choose a car:</label>
+    <select name="cars" id="cars">
+    <option *ngFor="let car of cars" [value]="car">{{ car }}</option>
+  </select>
+</div>
+
+<div>
+    <div *ngIf="isPurshased ; then thenblock ; else elseblock"></div>
+    <div>
+        <ng-template #thenblock>
+
+            <table [style.width]="' 50%'">
+                <tr *ngFor="let product of productList; index as i">
+                    <th>{{ product.ID }}</th>
+                    <th>{{ product.productName }}</th>
+                    <th>{{ product.quantity }}</th>
+                    <th>{{ product.price }}</th>
+                    <th>
+                        <img [src]="product.img" alt="" [style.width]="'50px'" [style.height]="'50px'" />
+                    </th>
+                </tr>
+            </table>
+        </ng-template>
+    </div>
+    <ng-template #elseblock>
+
+        <div>
+            <h3>Thanks for purchasing from our Store {{userData}}</h3>
+        </div>
+    </ng-template>
+    <br><br>
+    <button (click)="changeing()">buy</button>
+</div>
+
+
+<input type="button" value="Greating" (click)="Greating () ">
+<label for="myinput">myinput</label>
+<input title="myinput" type="text" value="" #myInput />
+
+<button (click)="logMsg(myInput.value)">show maass</button>
+
+<br><br><br>
