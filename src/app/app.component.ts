@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ProductComponent } from './product/product.component';
 
 @Component({
   selector: 'myfirstapp-root',
@@ -10,5 +11,27 @@ export class AppComponent {
 
   title = 'task';
 
+  constructor() { }
 
+  @ViewChild(ProductComponent)
+  showProduct!: ProductComponent;
+
+
+
+  ngOnInit(): void {
+
+  }
+  public myview: boolean = true;
+  public myProduct: any;
+
+  show() {
+    this.myview = false
+
+
+  }
+
+  ngAfterViewInit(): void {
+    this.myProduct = this.showProduct.renderValues
+
+  }
 }

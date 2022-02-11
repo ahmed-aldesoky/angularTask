@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiscountOffers } from '../sharedClassAndType/DiscountOffers';
 import { icategory } from '../sharedClassAndType/ICategory';
 import { IProduct } from '../sharedClassAndType/IProduct';
+import { ProductServiceService } from '../services/product-service.service';
 
 @Component({
   selector: 'app-product',
@@ -36,7 +37,8 @@ export class ProductComponent implements OnInit {
   }
 
 
-  constructor() {
+
+  constructor(private product: ProductServiceService) {
     this.discount = 0.1,
       this.storeName = "m&m",
       this.storeLogo = "/assets/pngwing.com (16).png",
@@ -48,11 +50,19 @@ export class ProductComponent implements OnInit {
 
 
   }
+  prodList: Array<any> = [];
+  idList: any;
+  renderValues() {
+    this.prodList = this.product.getAllProduct();
 
+
+
+  }
 
   ngOnInit(): void {
 
-
+    this.prodList = this.product.getAllProduct();
+    this.idList = this.product.GetProductById(5)
   }
 
 }

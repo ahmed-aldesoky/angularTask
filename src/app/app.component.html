@@ -7,5 +7,17 @@
     <br><br>
     <app-main></app-main>
 </main>
+<div *ngIf="myview">
+
+    <div>
+        {{myProduct}}
+    </div>
+</div>
+<button (click)="show()">show maass</button>
 
 <app-footer></app-footer>
+
+
+
+
+<!-- *ngFor="let pro of myProduct" -->
